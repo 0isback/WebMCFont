@@ -6,7 +6,10 @@ It provides precise control over glyph spacing, baseline alignment, and mixed re
 ---
 
 ## Screenshots
+Mixed Mode (default + glyph font):
 <img width="1918" height="863" alt="image" src="https://github.com/user-attachments/assets/721d6ac8-a915-4533-b369-e7bbb19200fd" />
+
+Glyph Mode (all glyph font):
 <img width="1918" height="862" alt="image" src="https://github.com/user-attachments/assets/06b4e5c3-f202-4d35-9edf-00b74d8d0b2b" />
 
 ---
