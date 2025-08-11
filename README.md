@@ -18,3 +18,27 @@ It provides precise control over glyph spacing, baseline alignment, and mixed re
   - Space width multiplier
 
 ---
+
+Include the script in your project:
+```html
+<script type="module">
+  import { FontPERenderer } from './fontpe-webgl.js';
+</script>
+```
+
+---
+
+## Usage
+```javascript
+const canvas = document.getElementById('myCanvas');
+const renderer = new FontPERenderer({ canvas, basePath: './images/font' });
+
+await renderer.init();
+renderer.draw('Hello, my name is Sungyu Kim!', {
+  color: '#ffffff',
+  scale: 2,
+  mode: 'mixed',
+  glyphTrackPx: 2,
+  asciiAfterGlyphPadPx: 2.5
+});
+```
