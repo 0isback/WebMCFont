@@ -1,3 +1,5 @@
+# WebMCFont
+
 **WebMCFont** is a WebGL2-based pixel font renderer designed for retro-style UIs, games, and chat systems.  
 It provides precise control over glyph spacing, baseline alignment, and mixed rendering between ASCII and non-ASCII characters (e.g., Hangul), ensuring crisp and consistent typography.
 
