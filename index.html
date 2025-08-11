@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MC Font WebGL</title>
+  <style>
+    :root { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+    html, body { height: 100%; }
+    body { margin: 0; background: #0b0e13; color: #e8eef7; display: grid; grid-template-rows: auto 1fr; }
+    header { padding: 12px 16px; border-bottom: 1px solid #1b2330; background: rgba(11,14,19,.9); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1; }
+    .row { display: grid; grid-template-columns: 1fr repeat(5, max-content); gap: 10px; align-items: center; }
+    input[type="text"], input[type="color"], select, input[type="number"] {
+      appearance: none; background: #0f1520; color: #e8eef7; border: 1px solid #233047; border-radius: 10px; padding: 8px 10px; outline: none; font-size: 14px;
+    }
+    label { font-size: 12px; color: #9fb0c7; margin-right: 4px; }
+    canvas { width: 100%; height: calc(100vh - 66px); display:block; image-rendering: pixelated; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="row">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <label>텍스트</label>
+        <input id="text" type="text" value="Hello, my {name} Sun\gyu/Kim/. 마인크래프트 폰트는 [한글], (영어)를 모두 '지원합니다." />
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <label>색상</label>
+        <input id="color" type="color" value="#3ab7ff" />
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <label>그림자</label>
+        <select id="shadow"><option value="on" selected>켜기</option><option value="off">끄기</option></select>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <label>배율</label>
+        <input id="scale" type="number" min="1" step="1" value="2" />
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <label>정렬</label>
+        <select id="align"><option value="left">LEFT</option><option value="center" selected>CENTER</option><option value="right">RIGHT</option></select>
+      </div>
+	  <div style="display:flex; align-items:center; gap:6px;">
+		<label>모드</label>
+		<select id="mode"><option value="auto">AUTO (기본)</option><option value="mixed">MIXED</option><option value="default">DEFAULT만</option><option value="glyph" selected>GLYPH만</option></select>
+	  </div>
+    </div>
+  </header>
+
+  <canvas id="screen"></canvas>
+
+  <script type="module">
+    import { MCFontRenderer } from './MCFont.js';
+    const canvas = document.getElementById('screen');
+    const r = new FontPERenderer({ canvas, basePath: './images/font' });
+
+    // UI
+    const $ = (id)=>document.getElementById(id);
+    const state = { text: $('text').value };
+
+    function refresh(){
+      const color = $('color').value;
+      const align = $('align').value;
+      const scale = parseInt($('scale').value, 10) || 2;
+      const shadow = $('shadow').value === 'on';
+	  const mode = $('mode').value || 'auto';
+      r.draw(state.text, { color, align, scale, shadow, mode });
+    }
+
+    $('text').addEventListener('input', e => { state.text = e.target.value; refresh(); });
+    $('color').addEventListener('input', refresh);
+    $('align').addEventListener('change', refresh);
+    $('scale').addEventListener('change', refresh);
+    $('shadow').addEventListener('change', refresh);
+	$('mode').addEventListener('change', refresh);
+
+    // 초기화 & 첫 렌더
+    r.init().then(refresh);
+  </script>
+</body>
+</html>
