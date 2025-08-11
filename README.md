@@ -19,22 +19,20 @@ It provides precise control over glyph spacing, baseline alignment, and mixed re
 
 ---
 
+## Usage
 Include the script in your project:
 ```html
 <script type="module">
-  import { FontPERenderer } from './fontpe-webgl.js';
+  import { MCFontRenderer } from './MCFont.js';
 </script>
 ```
 
----
-
-## Usage
 ```javascript
 const canvas = document.getElementById('myCanvas');
-const renderer = new FontPERenderer({ canvas, basePath: './images/font' });
+const renderer = new MCFontRenderer({ canvas, basePath: './images/font' });
 
 await renderer.init();
-renderer.draw('Hello, my name is Sungyu Kim!', {
+renderer.draw('Hello, my name is 0isback!', {
   color: '#ffffff',
   scale: 2,
   mode: 'mixed',
