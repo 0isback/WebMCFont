@@ -5,7 +5,13 @@ It provides precise control over glyph spacing, baseline alignment, and mixed re
 
 ---
 
-## ✨ Features
+## Screenshots
+<img width="1918" height="863" alt="image" src="https://github.com/user-attachments/assets/721d6ac8-a915-4533-b369-e7bbb19200fd" />
+<img width="1918" height="862" alt="image" src="https://github.com/user-attachments/assets/06b4e5c3-f202-4d35-9edf-00b74d8d0b2b" />
+
+---
+
+## Features
 - **Pixel-perfect rendering** using WebGL2 (no anti-aliasing blur)
 - **Mixed-mode rendering**: seamlessly combine ASCII (`default8`) and Unicode glyph tiles (`glyph_xx`)
 - **Per-glyph spacing adjustments** for better visual balance
